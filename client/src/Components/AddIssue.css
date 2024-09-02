@@ -1,0 +1,26 @@
+/* AddIssue.css */
+.form-add-issue {
+  display: flex;
+  flex-direction: column;
+}
+
+.input-field {
+  margin: 10px 0;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-button {
+  background-color: #556cd6;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.submit-button:hover {
+  background-color: #4051b5;
+}
