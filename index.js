@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const PORT = process.env.PORT || 5000;
+const path = require("path");
 
 //parse json
 app.use(express.json());
@@ -11,11 +12,14 @@ let issues = [
     { id: 2, title: "UI Bug", description: "Buttons are not responsive on mobile views" }
 ];
 
+
+
 // CRUD operations
 
 // Create
 app.post('/api/issues', (req, res) => {
     const { title, description } = req.body;
+    console.log(req.body, "req.body")
     const newIssue = {
         id: issues.length + 1,
         title,
@@ -61,6 +65,11 @@ app.delete('/api/issues/:id', (req, res) => {
         issues = issues.filter(i => i.id !== parseInt(req.params.id));
         res.status(204).send();
     }
+});
+
+app.use(express.static(path.join(__dirname,  "client", "build")));
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '/client/build', 'index.html'));
 });
 
 // Start the server
